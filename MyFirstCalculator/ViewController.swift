@@ -9,11 +9,25 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var firstOperandField: UITextField!
+    
+    @IBAction func selectOperator(_ sender: Any) {
+    }
+    
+    @IBOutlet weak var operatorButton: UIButton!
+    
+    @IBOutlet weak var secondOperandField: UITextField!
+    
+    
+    @IBOutlet weak var resultLabel: UILabel!
+    
+    @IBAction func calculator(_ sender: Any) {
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        // Do any additional setup after loading the view}
     }
-
-
 }
 
