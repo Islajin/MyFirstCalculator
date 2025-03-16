@@ -58,6 +58,10 @@ class ViewController: UIViewController {
         let result = a+b
         resultLabel.text = "\(result)"
         
+        let op=operatorButton.title(for: .normal)!
+        //op는 ? 으로 나타나 있는 operator 버튼을 연산자를 가져와서 상수에 저장해둔 것
+        
+        
         
         
     }
