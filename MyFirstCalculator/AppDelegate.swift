@@ -1,9 +1,3 @@
-5//
-//  AppDelegate.swift
-//  MyFirstCalculator
-//
-//  Created by yeonjin on 3/15/25.
-//
 
 import UIKit
 import CoreData
