@@ -53,6 +53,8 @@ class ViewController: UIViewController {
     
     @IBAction func calculator(_ sender: Any) {
         let a=Int( firstOperandField.text!)!
+        //아무것도 입력하지 않았을 때 크래쉬가 발생하는 이유는 text는 옵셔널이며, nil을 강제 추출하게 되기때문에 발생
+        
         let b=Int( secondOperandField.text!)!
         
         let op=operatorButton.title(for: .normal)!
