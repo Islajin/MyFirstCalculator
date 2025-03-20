@@ -52,34 +52,46 @@ class ViewController: UIViewController {
     @IBOutlet weak var resultLabel: UILabel!
     
     @IBAction func calculator(_ sender: Any) {
-        let a=Int( firstOperandField.text!)!
-        //아무것도 입력하지 않았을 때 크래쉬가 발생하는 이유는 text는 옵셔널이며, nil을 강제 추출하게 되기때문에 발생
-        
-        let b=Int( secondOperandField.text!)!
-        
-        let op=operatorButton.title(for: .normal)!
-        //op는 ? 으로 나타나 있는 operator 버튼을 연산자를 가져와서 상수에 저장해둔 것
-        
-        if op == "+" {
-            let result = a+b
-            resultLabel.text = "\(result)"
-        }else if op == "-" {
-            let result = a-b
-            resultLabel.text = "\(result)"
-        }else if op == "*" {
-            let result = a*b
-            resultLabel.text = "\(result)"
-        }else if op == "/" {
-            let result = a/b
-            resultLabel.text="\(result)"
-        }else {
-            print("연산자 선택")
+       
+
+        if let text=firstOperandField.text, let a=Int(text){
+            
         }
         
-
+        if let text=secondOperandField.text, let b=Int(text){
+            
+        }
+        
+            
+        if let op=operatorButton.title(for: .normal) {}
+        //op는 ? 으로 나타나 있는 operator 버튼을 연산자를 가져와서 상수에 저장해둔 것
         
         
+        if let text=firstOperandField.text,let a=Int(text){
+            if let text=secondOperandField.text,let b=Int(text){
+                if let op=operatorButton.title(for: .normal){
+                    
+                    if op == "+" {
+                        let result = a+b
+                        resultLabel.text = "\(result)"
+                    }else if op == "-" {
+                        let result = a-b
+                        resultLabel.text = "\(result)"
+                    }else if op == "*" {
+                        let result = a*b
+                        resultLabel.text = "\(result)"
+                    }else if op == "/" {
+                        let result = a/b
+                        resultLabel.text="\(result)"
+                    }else {
+                        print("연산자 선택")
+                    }
+                }
+                
+            }
+        }
         
+    
         
     }
     
