@@ -64,35 +64,32 @@ class ViewController: UIViewController {
         
             
         if let op=operatorButton.title(for: .normal) {}
-        //op는 ? 으로 나타나 있는 operator 버튼을 연산자를 가져와서 상수에 저장해둔 것
+    
+        //it let과 gurad let 이 다른 이유는 guard문 사용시 스코프가 guard문 내에 한정되지 않기때문임
         
-        
-        if let text=firstOperandField.text,let a=Int(text){
-            if let text=secondOperandField.text,let b=Int(text){
-                if let op=operatorButton.title(for: .normal){
-                    
-                    if op == "+" {
-                        let result = a+b
-                        resultLabel.text = "\(result)"
-                    }else if op == "-" {
-                        let result = a-b
-                        resultLabel.text = "\(result)"
-                    }else if op == "*" {
-                        let result = a*b
-                        resultLabel.text = "\(result)"
-                    }else if op == "/" {
-                        let result = a/b
-                        resultLabel.text="\(result)"
-                    }else {
-                        print("연산자 선택")
-                    }
-                }
-                
-            }
+        guard let text=firstOperandField.text, let a=Int(text) else {
+            return}
+        guard let text=secondOperandField.text, let b=Int(text) else {
+            return}
+        guard let op=operatorButton.title(for: .normal) else {
+            return
         }
         
-    
-        
+        if op == "+" {
+            let result = a+b
+            resultLabel.text = "\(result)"
+        }else if op == "-" {
+            let result = a-b
+            resultLabel.text = "\(result)"
+        }else if op == "*" {
+            let result = a*b
+            resultLabel.text = "\(result)"
+        }else if op == "/" {
+            let result = a/b
+            resultLabel.text="\(result)"
+        }else {
+            print("연산자 선택")
+        }
     }
     
     
