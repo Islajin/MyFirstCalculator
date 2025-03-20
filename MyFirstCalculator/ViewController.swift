@@ -74,22 +74,30 @@ class ViewController: UIViewController {
         guard let op=operatorButton.title(for: .normal) else {
             return
         }
-        
-        if op == "+" {
-            let result = a+b
-            resultLabel.text = "\(result)"
-        }else if op == "-" {
-            let result = a-b
-            resultLabel.text = "\(result)"
-        }else if op == "*" {
-            let result = a*b
-            resultLabel.text = "\(result)"
-        }else if op == "/" {
-            let result = a/b
-            resultLabel.text="\(result)"
-        }else {
-            print("연산자 선택")
+    
+
+        var result: Int? = nil
+        //result를 옵셔널 Int상수로 선언
+        switch op {
+        case "+":
+            result = a+b
+        case "-":
+            result = a-b
+        case "*":
+            result = a*b
+        case "/":
+            result=a/b
+        default:
+            break
         }
+        //result가 옵셔널이 아니면 resultLabel.text= "\(result)"
+        
+        guard let result else {
+            return
+        }
+        resultLabel.text = "\(result)"
+        
+        
     }
     
     
