@@ -52,30 +52,32 @@ class ViewController: UIViewController {
     @IBOutlet weak var resultLabel: UILabel!
     
     @IBAction func calculator(_ sender: Any) {
-       
-
-        if let text=firstOperandField.text, let a=Int(text){
-            
-        }
-        
-        if let text=secondOperandField.text, let b=Int(text){
-            
-        }
-        
-            
-        if let op=operatorButton.title(for: .normal) {}
     
         //it let과 gurad let 이 다른 이유는 guard문 사용시 스코프가 guard문 내에 한정되지 않기때문임
         
         guard let text=firstOperandField.text, let a=Int(text) else {
+            let alert=UIAlertController(title: "알림", message: "값을 입력해 주세요", preferredStyle: .alert)
+            let okAction=UIAlertAction(title: "확인", style: .default)
+            alert.addAction(okAction)
+            present(alert, animated: true)
             return}
+        
         guard let text=secondOperandField.text, let b=Int(text) else {
+            let alert=UIAlertController(title: "알림", message: "값을 입력해 주세요", preferredStyle: .alert)
+            let okAction=UIAlertAction(title: "확인", style: .default)
+            alert.addAction(okAction)
+            present(alert, animated: true)
             return}
-        guard let op=operatorButton.title(for: .normal) else {
+        
+        guard let op=operatorButton.title(for: .normal),op != "?" else {
+            let alert=UIAlertController(title: "알림", message: "연산자를 선택해 주세요", preferredStyle: .alert)
+            let okAction=UIAlertAction(title: "확인", style: .default)
+            alert.addAction(okAction)
+            present(alert, animated: true)
             return
         }
-    
-
+        
+        
         var result: Int? = nil
         //result를 옵셔널 Int상수로 선언
         switch op {
