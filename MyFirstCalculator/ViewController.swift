@@ -11,6 +11,14 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var firstOperandField: UITextField!
     
+    func showAlert(message : String) {
+        let alert=UIAlertController(title: "알림", message: message, preferredStyle: .alert)
+        let okAction=UIAlertAction(title: "확인", style: .default)
+        alert.addAction(okAction)
+        present(alert, animated: true)
+        
+    }
+    
     @IBAction func selectOperator(_ sender: Any) {
         
         let actionSheet=UIAlertController(title: nil, message: nil , preferredStyle: .actionSheet)
@@ -56,24 +64,16 @@ class ViewController: UIViewController {
         //it let과 gurad let 이 다른 이유는 guard문 사용시 스코프가 guard문 내에 한정되지 않기때문임
         
         guard let text=firstOperandField.text, let a=Int(text) else {
-            let alert=UIAlertController(title: "알림", message: "값을 입력해 주세요", preferredStyle: .alert)
-            let okAction=UIAlertAction(title: "확인", style: .default)
-            alert.addAction(okAction)
-            present(alert, animated: true)
+           showAlert(message : "값을 입력해주세요.")
+            
             return}
         
         guard let text=secondOperandField.text, let b=Int(text) else {
-            let alert=UIAlertController(title: "알림", message: "값을 입력해 주세요", preferredStyle: .alert)
-            let okAction=UIAlertAction(title: "확인", style: .default)
-            alert.addAction(okAction)
-            present(alert, animated: true)
+            showAlert(message : "값을 입력해주세요.")
             return}
         
         guard let op=operatorButton.title(for: .normal),op != "?" else {
-            let alert=UIAlertController(title: "알림", message: "연산자를 선택해 주세요", preferredStyle: .alert)
-            let okAction=UIAlertAction(title: "확인", style: .default)
-            alert.addAction(okAction)
-            present(alert, animated: true)
+            showAlert(message : "연산자를 선택해주세요.")
             return
         }
         
