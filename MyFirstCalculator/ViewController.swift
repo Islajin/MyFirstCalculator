@@ -72,11 +72,13 @@ class ViewController: UIViewController {
         //it let과 gurad let 이 다른 이유는 guard문 사용시 스코프가 guard문 내에 한정되지 않기때문임
         
         guard let text=firstOperandField.text, let a=Int(text) else {
-           showAlert(message : "값을 입력해주세요.")
-            
+            firstOperandField.becomeFirstResponder()
+            showAlert(message : "값을 입력해주세요.")
+            //경고창을 표시한 후에 firstResponder을 호출하면 경고창이 그 전의 리스폰더를 기억해 두기 때문에 경고창 앞에 선언해야 한다.
             return}
         
         guard let text=secondOperandField.text, let b=Int(text) else {
+            secondOperandField.becomeFirstResponder( )
             showAlert(message : "값을 입력해주세요.")
             return}
         
@@ -106,6 +108,14 @@ class ViewController: UIViewController {
         }
         resultLabel.text = "\(result)"
         
+        if firstOperandField.isFirstResponder {
+            firstOperandField.resignFirstResponder( )
+        }
+
+        if secondOperandField.isFirstResponder {
+            secondOperandField.resignFirstResponder( )
+        }
+        
         
     }
     
@@ -113,6 +123,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view}
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        firstOperandField.becomeFirstResponder()
     }
 }
 
