@@ -11,6 +11,10 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var firstOperandField: UITextField!
     
+    @IBOutlet weak var secondOperandField: UITextField!
+    
+    var selectedOperator: Operator?
+    
     func showAlert(message : String, title: String = "알림") {
         let alert=UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction=UIAlertAction(title: title, style: .default)
@@ -25,21 +29,27 @@ class ViewController: UIViewController {
         
         let plusAction=UIAlertAction(title: "+ (더하기)", style: .default) { _ in
             
+            self.selectedOperator = .plus
             self.operatorButton.setTitle("+", for: .normal)
             
         }
         actionSheet.addAction(plusAction)
         
         let minusAction=UIAlertAction(title: "-(빼기)", style: .default) { _ in
+            self.selectedOperator = .minus
             self.operatorButton.setTitle("-", for: .normal)}
+        
         actionSheet.addAction(minusAction)
         
         let divideAction=UIAlertAction(title: "/(나누기)", style: .default) { _ in
+            self.selectedOperator = .divide
             self.operatorButton.setTitle("/", for: .normal)
+    
         }
         actionSheet.addAction(divideAction)
         
         let multiplyAction=UIAlertAction(title: "*(곱하기)", style: .default) { _ in
+            self.selectedOperator = .multiply
             self.operatorButton.setTitle("*", for: .normal)
         }
         actionSheet.addAction(multiplyAction)
@@ -49,12 +59,10 @@ class ViewController: UIViewController {
     }
   
         
-        
 
     @IBOutlet weak var operatorButton: UIButton!
     
-    
-    @IBOutlet weak var secondOperandField: UITextField!
+
     
     
     @IBOutlet weak var resultLabel: UILabel!
@@ -72,7 +80,7 @@ class ViewController: UIViewController {
             showAlert(message : "값을 입력해주세요.")
             return}
         
-        guard let op=operatorButton.title(for: .normal),op != "?" else {
+        guard let op=selectedOperator else {
             showAlert(message : "연산자를 선택해주세요.")
             return
         }
@@ -81,17 +89,16 @@ class ViewController: UIViewController {
         var result: Int? = nil
         //result를 옵셔널 Int상수로 선언
         switch op {
-        case "+":
+        case .plus:
             result = a+b
-        case "-":
+        case .minus:
             result = a-b
-        case "*":
+        case .multiply:
             result = a*b
-        case "/":
+        case .divide:
             result=a/b
-        default:
-            break
         }
+        
         //result가 옵셔널이 아니면 resultLabel.text= "\(result)"
         
         guard let result else {
