@@ -122,6 +122,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        firstOperandField.delegate = self
         // Do any additional setup after loading the view}
     }
     
@@ -132,3 +134,18 @@ class ViewController: UIViewController {
     }
 }
 
+
+extension ViewController : UITextFieldDelegate{
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        guard !string.isEmpty else {
+            return true
+        }
+        
+        guard let _ = Int(string) else {return false}
+        
+        return true
+    }
+    
+    
+}
